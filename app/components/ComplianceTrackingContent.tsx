@@ -23,7 +23,7 @@ import Box from '@mui/material/Box';
 import NotificationIcon from "../../public/assets/NotificationIcon.svg"
 import ChatIcon from "../../public/assets/ChatIcon.svg"
 // import MyProfile from "../../public/assets/MyProfile.svg"
-import Arrowdown from "../../public/assets/Arrowdown.svg"
+import ArrowDown from "../../public/assets/ArrowDown.svg"
 import profile from "../../public/assets/profile.svg"
 // import LogOutIcon from "../../public/assets/LogOutIcon.svg"
 
@@ -338,7 +338,7 @@ const ComplianceTrackingContent: React.FC = () => {
                 <p className="text-[#41404B] text-[13px] leading-[19.5px] font-normal">Consultant</p>
               </div>
               <div>
-                <Image width={16} height={16} src={Arrowdown} alt="Arrowdown" />
+                <Image width={16} height={16} src={ArrowDown} alt="ArrowDown" />
               </div>
             </div>
 

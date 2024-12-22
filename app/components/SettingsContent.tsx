@@ -13,7 +13,7 @@ import ChatIcon from "../../public/assets/ChatIcon.svg"
 
 import profile from "../../public/assets/profile.svg"
 
-import Arrowdown from "../../public/assets/Arrowdown.svg"
+import ArrowDown from "../../public/assets/ArrowDown.svg"
 
 
 
@@ -95,7 +95,7 @@ const SettingsContent = () => {
                           </div>
                             
                           <div>
-                            <Image width={16} height={16} src={Arrowdown} alt="Arrowdown" />
+                            <Image width={16} height={16} src={ArrowDown} alt="Arrowdown" />
                           </div>
                         </div>
 
