@@ -11,7 +11,6 @@ import {
     SheetHeader,
 } from "@/components/ui/sheet"
 
-// Define types for the transaction data
 type Transaction = {
   id: string;
   amount: string;
@@ -193,27 +192,27 @@ const TransactionMonitoringTable: React.FC = () => {
   return (
     <div className='pt-10'>
         <Box>
-          {/* Tabs */}
-          <Box display="flex" gap={2} mb={3}>
-            {['All', 'Successful', 'Pending', 'Failed'].map((tab) => (
-              <Typography
-                key={tab}
-                onClick={() => setSelectedTab(tab as 'All' | 'Successful' | 'Pending' | 'Failed')}
-                sx={{
-                    cursor: 'pointer',
-                    paddingBottom: '10px',
-                    borderBottom: selectedTab === tab ? '2px solid #5B52B6' : '2px solid transparent',
-                    fontWeight: selectedTab === tab ? 'bold' : 'normal',
-                    color: selectedTab === tab ? '#101828' : '#41404B', 
-                    transition: 'all 0.3s ease-in-out',
-                }}
-              >
-                {tab} Transactions
-              </Typography>
-            ))}
+          <Box>
+            <div className='flex gap-4 mb-3 flex-wrap items-center lg:items-center'>
+              {['All', 'Successful', 'Pending', 'Failed'].map((tab) => (
+                <Typography
+                  key={tab}
+                  onClick={() => setSelectedTab(tab as 'All' | 'Successful' | 'Pending' | 'Failed')}
+                  sx={{
+                      cursor: 'pointer',
+                      paddingBottom: '10px',
+                      borderBottom: selectedTab === tab ? '2px solid #5B52B6' : '2px solid transparent',
+                      fontWeight: selectedTab === tab ? 'bold' : 'normal',
+                      color: selectedTab === tab ? '#101828' : '#41404B',
+                      transition: 'all 0.3s ease-in-out',
+                  }}
+                >
+                  {tab} Transactions
+                </Typography>
+              ))}
+            </div>
           </Box>
-          {/* Table */}
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} className='scrollbar-hide'>
             <Table>
               <TableHead>
                 <TableRow>
@@ -300,6 +299,7 @@ const TransactionMonitoringTable: React.FC = () => {
               </TableBody>
             </Table>
             <TablePagination
+              className='scrollbar-hide'
               component="div"
               count={filteredTransactions.length}
               page={page}

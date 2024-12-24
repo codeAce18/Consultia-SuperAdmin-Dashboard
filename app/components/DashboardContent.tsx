@@ -1,20 +1,7 @@
 import React from 'react'
-
 import Image from 'next/image'
-
 import { useState } from 'react';
-
 import { Input } from '@/components/ui/input';
-import { Separator } from "@/components/ui/separator"
-import { SearchIcon } from 'lucide-react';
-
-
-import NotificationIcon from "../../public/assets/NotificationIcon.svg"
-import ChatIcon from "../../public/assets/ChatIcon.svg"
-import profile from "../../public/assets/profile.svg"
-import ArrowDown from "../../public/assets/ArrowDown.svg"
-
-
 import TotalUsersIcon from "../../public/assets/TotalUsersIcon.svg"
 
 import TotalSubscribersIcon from "../../public/assets/TotalSubscribersIcon.svg"
@@ -24,7 +11,6 @@ import TotalSubValueIcon from "../../public/assets/TotalSubValueIcon.svg"
 import TotalWithdrawalValueIcon from "../../public/assets/TotalWithdrawalValueIcon.svg"
 
 import IncomeAnalyticsChart from './IncomeAnalyticsChart';
-
 import  { useEffect} from 'react';
 import { 
   Table, 
@@ -71,6 +57,13 @@ import ReportIcon from "../../public/assets/ReportIcon.svg";
 
 
 import ProfessionalPlanIcon from "../../public/assets/ProfessionalPlanIcon.svg";
+import DashboardHeader from './DashboardHeader';
+
+
+
+
+
+
 
 interface User {
     id: string;
@@ -748,6 +741,8 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
         const [selectedUserProfile, setSelectedUserProfile] = useState<User | null>(null);
          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [selectedTab, setSelectedTab] = useState<'client' | 'consultant'>('client');
+
+        const [isSearchVisible, setIsSearchVisible] = useState(false);
       
         // Tab labels
         // const tabs = ['All Users', 'Active Users', 'Suspended', 'Deactivated'];
@@ -812,81 +807,7 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
         };
   return (
     <div>
-      {/* Header for the Dashboard Screen */}
-      <div className="flex justify-between">
-        <div>
-          <div className="flex items-center gap-10">
-            <h1 className="text-[20px] leading-[30px] text-[#101828] font-bold whitespace-nowrap">Super Admin</h1>
-            <div>
-              <div className="relative flex items-center w-[479px] h-[40px] mx-auto">
-                <Input
-                  type="text"
-                  placeholder="Search..."
-                  className="pr-10 pl-10 py-2 border-none bg-[#F0F0F9] rounded-[100px]  w-full text-gray-800 focus:outline-none focus:ring focus:ring-blue-300"
-                />
-
-                <div className="absolute left-3">
-                  <SearchIcon className="w-[24px] h-[24px] text-gray-500" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-                
-
-        <div className="flex items-center gap-[10px] border-l-[1px] border-[#D0D0D3] pl-[20px]">
-          <div>
-            <Image width={24} height={24} src={NotificationIcon} alt="NotificationIcon"/>
-          </div>
-
-          <div>
-            <Image  width={24} height={24}  src={ChatIcon} alt="ChatIcon"/>
-          </div>
-
-          <div>
-            <div className="flex items-center gap-[10px] cursor-pointer">
-              <div>
-                <Image width={24} height={24} src={profile} alt="MyProfile" />
-              </div>
-
-              <div>
-                <h1 className="text-[13px] leading-[19.5px] text-[#101828] font-semibold">Consultia LTD</h1>
-                <p className="text-[#41404B] text-[13px] leading-[19.5px] font-normal">Super Admin</p>
-              </div>
-                
-              <div>
-              <Image width={16} height={16} src={ArrowDown} alt="Arrowdown" />
-              </div>
-            </div>
-
-            {/* {isOverlayVisible && (
-              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" onClick={toggleOverlay}>
-                <div className="bg-white flex flex-col items-start gap-y-[12px] p-[8px] w-[134px] rounded-lg shadow-lg absolute top-20 right-6">
-                  <div className='flex items-center gap-[12px]'>
-                    <Image width={24} height={24} src={profile} alt="profile" />
-
-                    <h2 className='text-[#101828] text-[13px] leading-[19.5px] font-normal'>Profile</h2>
-                  </div>
-
-                  <div className='flex items-center gap-[12px]'>
-                    <Image width={24} height={24} src={LogOutIcon} alt="LogOutIcon" />
-
-                    <h2 className='text-[#101828] text-[13px] leading-[19.5px] font-normal'>Log Out</h2>
-                </div>
-              </div>
-            </div>
-          )} */}
-
-
-          </div>
-        </div>
-      </div>
-
-
-      <div className="pt-[24px]">
-        <Separator />
-      </div>
+      <DashboardHeader title="Super Admin" mobileTitle="Admin" />
 
 
 
@@ -899,39 +820,37 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
 
 
           <div className="pt-10">
-            <div className="grid grid-cols-4 gap-[8px]">
-
-              <div className="bg-[#FFFFFF] rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px] w-full">
-                <div className="flex items-center gap-[5px]">
-                  <Image width={37} height={37} src={TotalUsersIcon} alt="TotalUsersIcon" />
-                  <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">2,850</h1>
+            <div className='flex items-center justify-center'>
+                <div className="grid lg:grid-cols-4  gap-[10px] md:grid-cols-2 sm:grid-cols-1 lg:gap-[8px] md:gap-10 sm:gap-[10px]">
+                  <div className="bg-[#FFFFFF] rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px] w-full">
+                    <div className="flex items-center gap-[5px]">
+                      <Image width={37} height={37} src={TotalUsersIcon} alt="TotalUsersIcon" />
+                      <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">2,850</h1>
+                    </div>
+                    <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Users</h1>
+                  </div>
+                  <div className="bg-[#FFFFFF] rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px] w-full">
+                    <div className="flex items-center gap-[5px]">
+                      <Image width={37} height={37} src={TotalSubscribersIcon} alt="TotalSubscribersIcon" />
+                      <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">1,800</h1>
+                    </div>
+                    <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Subscribers</h1>
+                  </div>
+                  <div className="bg-[#FFFFFF] w-full rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px]">
+                    <div className="flex items-center gap-[5px]">
+                      <Image width={37} height={37} src={TotalSubValueIcon} alt="TotalSubValueIcon" />
+                      <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">₦400,000,000</h1>
+                    </div>
+                    <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Subscription Value</h1>
+                  </div>
+                  <div className="bg-[#FFFFFF] rounded-[8px] w-full border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px]">
+                    <div className="flex items-center gap-[5px]">
+                      <Image width={37} height={37} src={TotalWithdrawalValueIcon} alt="TotalWithdrawalValueIcon" />
+                      <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">₦320,000,000</h1>
+                    </div>
+                    <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Withdrawal Value</h1>
+                  </div>
                 </div>
-                <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Users</h1>
-              </div>
-
-              <div className="bg-[#FFFFFF] rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px] w-full">
-                <div className="flex items-center gap-[5px]">
-                  <Image width={37} height={37} src={TotalSubscribersIcon} alt="TotalSubscribersIcon" />
-                  <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">1,800</h1>
-                </div>
-                <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Subscribers</h1>
-              </div>
-
-              <div className="bg-[#FFFFFF] w-full rounded-[8px] border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px]">
-                <div className="flex items-center gap-[5px]">
-                  <Image width={37} height={37} src={TotalSubValueIcon} alt="TotalSubValueIcon" />
-                  <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">₦400,000,000</h1>
-                </div>
-                <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Subscription Value</h1>
-              </div>
-
-              <div className="bg-[#FFFFFF] rounded-[8px] w-full border-[1px] shadow-custom  border-[#F0F0F9] max-w-[260px] p-[16px]">
-                <div className="flex items-center gap-[5px]">
-                  <Image width={37} height={37} src={TotalWithdrawalValueIcon} alt="TotalWithdrawalValueIcon" />
-                  <h1 className="text-[24px] leading-[28.8px] font-bold text-[#101828]">₦320,000,000</h1>
-                </div>
-                <h1 className="text-[#7B91B0] pt-[20px] text-left text-[16px] leading-[24px] font-normal">Total Withdrawal Value</h1>
-              </div>
             </div>
           </div>
 
@@ -944,7 +863,7 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
      
             <div>
               <div className='pt-10 flex items-center justify-between'>
-                <h1 className='text-[#101828] text-[20px] leading-[30px] font-bold'>Recent User Registration</h1>
+                <h1 className='text-[#101828] text-[20px] leading-[30px] font-bold max-w-[242px] w-full'>Recent User Registration</h1>
         
                 <button 
                   onClick={handleViewAllClick}
@@ -957,7 +876,7 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
 
             <div className='pt-10'>
                 <Paper style={{  ...customStyles.container }}>
-                    <TableContainer>
+                    <TableContainer className='scrollbar-hide'>
                         <Table style={customStyles.table}>
                         <TableHead>
                             <TableRow>

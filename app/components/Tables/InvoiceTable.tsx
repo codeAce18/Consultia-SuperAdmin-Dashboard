@@ -250,25 +250,6 @@ const InvoiceTable: React.FC = () => {
                             <h1  className="text-[#101828] text-[20px] leading-[30px] font-normal text-right">₦0.00</h1>
                         </div>
                     </div>
-                    {/* <h2>Invoice Details</h2>
-                    <p><strong>Invoice ID:</strong> {detailedInvoice.id}</p>
-                    <p><strong>Subscriber Name:</strong> {detailedInvoice.subscriber.name}</p>
-                    <p><strong>Location:</strong> {detailedInvoice.subscriber.location}</p>
-                    <p><strong>Amount:</strong> {detailedInvoice.amount}</p>
-                    <p><strong>Date:</strong> {detailedInvoice.date}</p>
-                    <p><strong>Time:</strong> {detailedInvoice.time}</p>
-                    <p>
-                    <strong>Status:</strong>{" "}
-                    <span
-                        style={{
-                        padding: "5px 10px",
-                        borderRadius: "5px",
-                        ...statusStyles[detailedInvoice.status],
-                        }}
-                    >
-                        {detailedInvoice.status}
-                    </span>
-                    </p> */}
                 </div>
 
                 <div className="pt-20 flex items-start justify-between">
@@ -375,7 +356,7 @@ const InvoiceTable: React.FC = () => {
         ) : (
         <>
       {/* Tabs */}
-      <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+      <div className="flex flex-wrap gap-[20px] mb-[20px]">
         {["All", "Paid", "Pending", "Failed"].map((tab) => (
           <div
             key={tab}
@@ -393,7 +374,7 @@ const InvoiceTable: React.FC = () => {
       </div>
 
       {/* Table */}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="scrollbar-hide">
         <Table>
           <TableHead>
             <TableRow>

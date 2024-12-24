@@ -903,12 +903,12 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
         <div>
             {view === 'table' ? (
             <>
-            <div className='pt-[20px] flex items-center justify-between'>
-                <div className="flex gap-10 mb-4">
+            <div className="pt-10 flex flex-col sm:flex-row items-start justify-between">
+                <div className="flex flex-wrap gap-4 sm:gap-10 mb-4">
                     {tabs.map((tab) => (
                         <div
                         key={tab}
-                        className={`cursor-pointer pb-2 ${
+                        className={`cursor-pointer pb-2 whitespace-nowrap ${
                             activeTab === tab
                             ? 'font-bold border-b-4 border-[#5B52B6]'
                             : 'text-[#41404B]'
@@ -1096,8 +1096,8 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
             </div>
 
             <div className='pt-10'>
-                <Paper style={{  ...customStyles.container }}>
-                    <TableContainer>
+                <Paper style={{  ...customStyles.container }} className='min-w-full text-left overflow-x-auto  scrollbar-hide'>
+                    <TableContainer  className='min-w-full text-left overflow-x-auto  scrollbar-hide'>
                         <Table style={customStyles.table}>
                         <TableHead>
                             <TableRow>
@@ -1180,6 +1180,7 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
                         </Table>
                     </TableContainer>
                     <TablePagination
+                        className='scrollbar-hide'
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
                         count={filteredUsers.length}

@@ -359,9 +359,9 @@ const JobsProjectTable: React.FC = () => {
         <EditedProject />
       ) : (
         <>
-      <div className='flex  items-center justify-between'>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <div style={{ display: 'flex', gap: '16px' }}>
+        <div className='flex  items-start flex-col lg:flex-row lg:justify-between'>
+          <div className='flex flex-col sm:flex-row items-start justify-between mb-[16px]'>
+            <div className='flex flex-wrap gap-[16px]'>
               {activeView === 'jobs' && (
                 ['Client Jobs', 'New Jobs', 'Ongoing Jobs', 'Completed Jobs', 'Rejected Jobs'].map((tab) => (
                   <div
@@ -417,7 +417,7 @@ const JobsProjectTable: React.FC = () => {
             </div>
         </div>
 
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className='scrollbar-hide'>
         <Table>
           <TableHead>
             <TableRow>
@@ -568,7 +568,7 @@ const JobsProjectTable: React.FC = () => {
                                 </div>
 
 
-                                <div className='flex items-center gap-[1px]'>
+                                <div className='pt-10 flex flex-col items-start lg:flex-row md:flex-row gap-[1px]'>
                                     <Image src={GuidelinesPdf} alt='GuidelinesPdf' />
 
                                     <Image src={BrandingAssets} alt='BrandingAssets' />
@@ -644,11 +644,11 @@ const JobsProjectTable: React.FC = () => {
                                     <h1 className='text-[#757678] text-[20px] leading-[30px] font-normal'>ATTACHMENTS</h1>
                                     <p className='text-[#5B52B6] text-[20px] leading-[30px] font-medium'>Upload</p>
                                 </div>
-                                <div className='flex items-center gap-[1px]'>
-                                    <Image src={GuidelinesPdf} alt='GuidelinesPdf' />
-                                    <Image src={BrandingAssets} alt='BrandingAssets' />
-                                
-                                    <Image src={Plus} alt='Plus' />
+                                <div className='flex flex-col   items-start gap-[1px]'>
+                                  <Image src={GuidelinesPdf} alt='GuidelinesPdf' />
+                                  <Image src={BrandingAssets} alt='BrandingAssets' />
+                              
+                                  <Image src={Plus} alt='Plus' />
                                 </div>
                             </div>
                             
@@ -667,6 +667,7 @@ const JobsProjectTable: React.FC = () => {
         </Table>
         
         <TablePagination
+          className='scrollbar-hide'
           component="div"
           count={(activeView === 'jobs' ? filteredJobs : filteredProjects).length}
           page={page}
