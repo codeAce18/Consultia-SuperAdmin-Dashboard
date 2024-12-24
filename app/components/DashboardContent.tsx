@@ -742,7 +742,6 @@ const DashboardContent: React.FC<UserManagementTableProps> = ({
          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [selectedTab, setSelectedTab] = useState<'client' | 'consultant'>('client');
 
-        const [isSearchVisible, setIsSearchVisible] = useState(false);
       
         // Tab labels
         // const tabs = ['All Users', 'Active Users', 'Suspended', 'Deactivated'];
