@@ -373,7 +373,7 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
       const renderClientProfile = () => (
         <div>
             {renderStatusSwitcher()}
-            <div className='flex items-start gap-10 pt-10'>
+            <div className='flex  flex-wrap items-start gap-10 pt-10'>
                 <div>
                     <img
                         src={user.avatarUrl}
@@ -394,7 +394,7 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
                     </div>
 
                   </div>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 justify-center mx-auto gap-6">
                         {/* First Name */}
                         <div>
                             <p className="text-[#A9A9AE] text-[14px] leading-[21px] font-medium">First Name</p>
@@ -403,7 +403,7 @@ const StatusChip: React.FC<{ status: User['status'] }> = ({ status }) => {
                                     value={formData.firstName}
                                     onChange={(e) => handleChange("firstName", e.target.value)}
                                     placeholder="Enter First Name"
-                                    className="w-[339px] border-none bg-[#F0F0F9]"
+                                    className="max-w-[339px]  border-none bg-[#F0F0F9]"
                                 />
                             </div>
                         </div>
